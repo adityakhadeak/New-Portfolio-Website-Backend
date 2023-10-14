@@ -1,22 +1,17 @@
 import mongoose from "mongoose";
 
-const aboutSchema=new mongoose.Schema({
-    para1:{
-        type:String,
-        required:true
+const aboutSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        unique: false
     },
-    para2:{
-        type:String,
-        required:true
+    para: {
+        type: String,
+        required: true
     },
-    para3:{
-        type:String,
-        required:true
-    },
-    para4:{
-        type:String,
-        required:true
-    }
+
+
 })
 
-export default mongoose.model('about',aboutSchema)
+export default mongoose.model('about', aboutSchema)

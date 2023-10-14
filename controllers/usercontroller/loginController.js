@@ -6,7 +6,7 @@ const logincontroll=async(req,res)=>{
     let success=false
     try {
         const {username,password}=req.body
-        const user= await UserModel.findOne(username)
+        const user= await UserModel.findOne({username})
         if (!user) {
             return res.status(404).json({
                 success,
