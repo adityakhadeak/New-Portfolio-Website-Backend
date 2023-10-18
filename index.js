@@ -7,6 +7,9 @@ import routeUser from './routes/userRoute.js'
 import routerAbout from './routes/aboutRoutes.js'
 import routerEdu from './routes/eduRoute.js'
 import routerExp from './routes/expRoute.js'
+import routerCer from './routes/certificateRoute.js'
+import routerSkill from './routes/skillRoute.js'
+import routerProject from './routes/projectRoute.js'
 const app=express()
 
 dotenv.config()
@@ -17,6 +20,9 @@ app.use('/api/user',routeUser)
 app.use('/api/about',routerAbout)
 app.use('/api/edu',routerEdu)
 app.use('/api/exp',routerExp)
+app.use('/api/cer',routerCer)
+app.use('/api/skill',routerSkill)
+app.use('/api/project',routerProject)
 
 
 //Connect to Database

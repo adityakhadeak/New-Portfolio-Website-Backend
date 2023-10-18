@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
 const skillSchema=new mongoose.Schema({
-    skillname:{
+    name:{
         type:String,
         required:true
-    }
+    },
+    image:{
+        type:String,
+        required:true
+    },
 })
 
 export default mongoose.model('skill',skillSchema)

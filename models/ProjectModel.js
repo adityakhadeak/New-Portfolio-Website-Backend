@@ -9,17 +9,20 @@ const projectSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    tool:{
+    tools:{
         "1st":String,
         "2nd":String,
         "3rd":String,
+        "4th":String,
 
     },
     links: {
         github: String,
         live: String,
       },
-    
+    image:{
+        type:String
+    }
 })
 
 export default mongoose.model('project',projectSchema)

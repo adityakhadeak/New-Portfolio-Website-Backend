@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const certificateSchema=new mongoose.Schema({
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user',
+        unique:false
+    },
     title:{
         type:String,
         required:true
@@ -18,7 +23,8 @@ const certificateSchema=new mongoose.Schema({
         required:true
     },
     label:{
-        "1st":String
+        type:String,    
+        required:true
     },
     doc:{
         type:String,
