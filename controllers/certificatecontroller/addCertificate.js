@@ -3,6 +3,7 @@ import CertificateModel from "../../models/CertificateModel.js";
 const addcertificate=async(req,res)=>{
 
     const certificates=req.body
+    console.log(certificates)
 
     try {
         if (!certificates||certificates.length==0) {

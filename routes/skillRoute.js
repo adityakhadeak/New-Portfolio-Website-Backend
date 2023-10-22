@@ -15,11 +15,11 @@ const routerSkill=express()
 
 routerSkill.use(bodyParser.json())
 routerSkill.use(bodyParser.urlencoded({extended:true}))
-routerSkill.use(express.static('uploads/skills'))
+routerSkill.use(express.static('../../client/src/images/uploads/skills'))
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(__dirname,'../uploads/skills'),(error,succes)=>{
+      cb(null, path.join(__dirname,'../../client/src/images/uploads/skills'),(error,succes)=>{
         if(error) throw error
       }); // Set the destination for image uploads
     },

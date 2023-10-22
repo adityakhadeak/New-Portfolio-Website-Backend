@@ -2,7 +2,7 @@ import EduModel from "../../models/EduModel.js"
 
 const addedu = async (req, res) => {
     const educations = req.body
-
+console.log(educations)
     try {
        
         if (!educations || educations.length === 0) {

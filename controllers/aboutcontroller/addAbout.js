@@ -4,10 +4,12 @@ import { validationResult } from "express-validator";
 const addabout = async (req, res) => {
    
     const aboutData = req.body
+    const allSavedData=[]
     try {
 
         if (!aboutData || aboutData.length === 0) {
             return res.status(400).json({
+                success:false,
                 message: "Invalid About details provided."
             });
         }
@@ -21,11 +23,13 @@ const addabout = async (req, res) => {
             })
 
             const savedAbout = await newAbout.save()
-
+            allSavedData.push(savedAbout)
             console.log(savedAbout)
         }
         res.status(201).json({
+            success:true,
             message: "About Details Added Successfully",
+            data:allSavedData
         });
 
     } catch (error) {

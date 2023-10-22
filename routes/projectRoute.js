@@ -14,11 +14,11 @@ const routerProject=express()
 
 routerProject.use(bodyParser.json())
 routerProject.use(bodyParser.urlencoded({extended:true}))
-routerProject.use(express.static('uploads/project'))
+routerProject.use(express.static('../../client/src/images/uploads/projects'))
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(__dirname,'../uploads/project'),(error,succes)=>{
+      cb(null, path.join(__dirname,'../../client/src/images/uploads/projects'),(error,succes)=>{
         if(error) throw error
       }); // Set the destination for image uploads
     },

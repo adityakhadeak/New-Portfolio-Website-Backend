@@ -16,6 +16,7 @@ const updateabout = async (req, res) => {
         //Checking if the user Exists or not
         if (!aboutParas) {
             return res.status(404).json({
+                success:false,
                 message: "About Para's Not Found"
             })
         }
@@ -24,6 +25,7 @@ const updateabout = async (req, res) => {
         const updatedAbout = await AboutModel.findByIdAndUpdate(req.params.id,{$set:updatedData},{new:true})
 
         res.status(200).json({
+            success:true,
             message: "About Section Updated Successfully",
             updatedAbout
         })
