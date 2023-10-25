@@ -20,7 +20,7 @@ const addskill = async (req, res) => {
       savedSkills.push(savedSkill);
     
 
-    res.status(201).json({ message: 'Skills added successfully', data: savedSkills });
+    res.status(201).json({success:true, message: 'Skills added successfully', data: savedSkills });
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }

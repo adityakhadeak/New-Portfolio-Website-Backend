@@ -16,6 +16,7 @@ const updatecertificate=async(req,res)=>{
         if(!certificate)
         {
             return res.status(404).json({
+                success:false,
                 message:"Certificate Not Found"
             })
         }
@@ -23,6 +24,7 @@ const updatecertificate=async(req,res)=>{
         const updatedData=await CertificateModel.findByIdAndUpdate(req.params.id,{$set:newData},{new:true})
         res.status(200).json({
             message: "Certificate Details Updated Successfully",
+            success:true,
             updatedData
         })
     } catch (error) {

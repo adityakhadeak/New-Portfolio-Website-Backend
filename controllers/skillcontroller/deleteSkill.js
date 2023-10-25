@@ -10,7 +10,7 @@ const deleteskill = async (req, res) => {
 
     await SkillModel.findByIdAndRemove(req.params.id);
 
-    const imagePath = `../../client/src/images/uploads/skills/${skill.image}`;
+    const imagePath = `C:/New Volume D/Web Development/Projects/React/Portfolio/client/src/images/uploads/skills/${skill.image}`;
     
     fs.unlink(imagePath, (err) => {
       if (err) {
