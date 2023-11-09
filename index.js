@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import ConnectToDB from './database/db.js'
+import {v2 as cloudinary} from 'cloudinary';
+import fileUpload from 'express-fileupload';
 import routeContact from './routes/contactRoute.js'
 import routeUser from './routes/userRoute.js'
 import routerAbout from './routes/aboutRoutes.js'
@@ -13,6 +15,9 @@ import routerProject from './routes/projectRoute.js'
 const app=express()
 
 dotenv.config()
+app.use(fileUpload({
+    useTempFiles:true
+}))
 app.use(express.json())
 app.use(cors())
 app.use('/api/contact',routeContact)
@@ -27,6 +32,13 @@ app.use('/api/project',routerProject)
 
 //Connect to Database
 ConnectToDB()
+
+          
+cloudinary.config({ 
+  cloud_name: process.env.ClOUDINARY_CLIENT_NAME, 
+  api_key: process.env.ClOUDINARY_CLIENT_API, 
+  api_secret: process.env.ClOUDINARY_CLIENT_SECRET 
+});
 
 const PORT=process.env.PORT || 4000
 

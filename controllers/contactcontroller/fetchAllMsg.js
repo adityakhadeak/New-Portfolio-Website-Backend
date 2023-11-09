@@ -3,7 +3,10 @@ import ContactModel from "../../models/ContactModel.js";
 const fetchmsg=async(req,res)=>{
     try {
         const msgs=await ContactModel.find({})
-        res.send(msgs)
+        res.status(200).json({
+            success:true,
+            data:msgs
+        })
     } catch (error) {
         console.log(error.message)
         res.status(400).json({

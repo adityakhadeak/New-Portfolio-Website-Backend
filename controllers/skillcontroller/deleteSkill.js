@@ -5,7 +5,9 @@ const deleteskill = async (req, res) => {
     const skill = await SkillModel.findById(req.params.id);
 
     if (!skill) {
-      return res.status(404).json({ message: 'Skill not found' });
+      return res.status(404).json({ 
+        success:false,
+        message: 'Skill not found' });
     }
 
     await SkillModel.findByIdAndRemove(req.params.id);
@@ -18,7 +20,8 @@ const deleteskill = async (req, res) => {
       }
     });
 
-    res.status(200).json({ message: 'Skill deleted successfully' });
+    res.status(200).json({success:true,
+      message: 'Skill deleted successfully' });
   } catch (error) {
     console.error('Error deleting skill:', error);
     res.status(500).json({ error: 'Internal server error' });

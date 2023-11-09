@@ -16,7 +16,10 @@ const addMsg= async(req,res)=>{
             name,email,msg
         })
         const sendMsg=await newmsg.save()
-        res.send(sendMsg)
+        res.status(200).json({
+            success:true,
+            msg:sendMsg
+        })
     } catch (error) {
         console.log(error.message)
         res.status(400).json({
