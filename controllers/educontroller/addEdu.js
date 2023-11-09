@@ -2,11 +2,12 @@ import EduModel from "../../models/EduModel.js"
 
 const addedu = async (req, res) => {
     const educations = req.body
-console.log(educations)
+    const savedEdu=[]
     try {
        
         if (!educations || educations.length === 0) {
             return res.status(400).json({
+                success:false,
                 message: "Invalid education details provided."
             });
         }
@@ -18,6 +19,7 @@ console.log(educations)
             if(doExist)
             {
                 return res.status(409).json({
+                    success:false,
                     message:"Education Detail Already Exist For Year "+eduObj.year
                 })
             }
@@ -33,11 +35,13 @@ console.log(educations)
 
             
 
-            const savedEdu = await newEdu.save()
-
+            const data = await newEdu.save()
+            savedEdu.push(data)
             console.log(savedEdu)
         }
         res.status(201).json({
+            success:true,
+            data:savedEdu,
             message: "Education Details Added Successfully",
         });
 

@@ -2,11 +2,12 @@ import ExpModel from "../../models/ExpModel.js"
 
 const addexp = async (req, res) => {
     const experience = req.body
-
+    const savedEdu=[]
     try {
        
         if (!experience || experience.length === 0) {
             return res.status(400).json({
+                success:false,
                 message: "Invalid experience details provided."
             });
         }
@@ -18,6 +19,7 @@ const addexp = async (req, res) => {
             if(doExist)
             {
                 return res.status(409).json({
+                    success:false,
                     message:"Experience Detail Already Exist For Year "+expObj.duration
                 })
             }
@@ -34,11 +36,12 @@ const addexp = async (req, res) => {
 
             
 
-            const savedEdu = await newExp.save()
-
-            console.log(savedEdu)
+            const data= await newExp.save()
+            savedEdu.push(data)
         }
         res.status(201).json({
+            success:true,
+            data:savedEdu,
             message: "Experience Details Added Successfully",
         });
 

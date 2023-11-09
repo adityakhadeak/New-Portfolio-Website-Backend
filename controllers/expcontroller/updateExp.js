@@ -22,6 +22,7 @@ const updateexp = async (req, res) => {
         //Checking if the experiences Exists or not
         if (!experience) {
             return res.status(404).json({
+                success:false,
                 message: "experience  Not Found"
             })
         }
@@ -31,12 +32,14 @@ const updateexp = async (req, res) => {
         const updatedExp= await ExpModel.findByIdAndUpdate(req.params.id,{$set:newExp},{new:true})
 
         res.status(200).json({
-            message: "experience Detail Updated Successfully",
-            updatedExp
+            success:false,
+            message: "Experience Detail Updated Successfully",
+            updatedData:updatedExp
         })
     } catch (error) {
         console.log(error.message)
         res.status(400).json({
+            success:false,
             message: "Internal server error"
         })
     }

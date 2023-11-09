@@ -17,6 +17,7 @@ const updateedu = async (req, res) => {
         //Checking if the Educations Exists or not
         if (!education) {
             return res.status(404).json({
+                success:false,
                 message: "Education  Not Found"
             })
         }
@@ -26,8 +27,9 @@ const updateedu = async (req, res) => {
         const updatedEdu= await EduModel.findByIdAndUpdate(req.params.id,{$set:newEdu},{new:true})
 
         res.status(200).json({
+            success:true,
             message: "Education Detail Updated Successfully",
-            updatedEdu
+            updatedData:updatedEdu
         })
     } catch (error) {
         console.log(error.message)
