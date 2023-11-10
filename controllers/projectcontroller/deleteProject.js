@@ -1,5 +1,5 @@
 import ProjectModel from '../../models/ProjectModel.js';
-import fs from 'fs'
+import { v2 as cloudinary } from 'cloudinary';
 const deleteproject = async (req, res) => {
   try {
     const project = await ProjectModel.findById(req.params.id);

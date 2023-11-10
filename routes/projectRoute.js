@@ -34,6 +34,6 @@ routerProject.get('/fetchprojects',fetchuser,async(req,res)=>{
 })
 
 // Route to delete skills 
-routerProject.delete("/deletesproject/:id",fetchuser,deleteproject)
+routerProject.delete("/deleteproject/:id",fetchuser,deleteproject)
 
 export default routerProject

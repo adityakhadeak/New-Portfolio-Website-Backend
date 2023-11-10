@@ -21,14 +21,19 @@ routeUser.post('/createuser', [
 routeUser.post('/login', logincontroll)
 
 //Getting the info of loggedin user 
-routeUser.post('/getuser', fetchuser, async (req, res) => {
+routeUser.get('/getuser', fetchuser, async (req, res) => {
   try {
     const userId = req.user.id
+    console.log(userId)
     const user = await UserModel.findById(userId).select('-password')
-    res.send(user)
+    res.status(200).json({
+      success:true,
+      data:user
+    })
   } catch (error) {
     console.log(error.message)
     res.status(400).json({
+      success:false,
       message: "Internal server error"
     })
   }

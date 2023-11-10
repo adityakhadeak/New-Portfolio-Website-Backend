@@ -11,7 +11,7 @@ const addproject = async (req, res) => {
       const ProjectData = new ProjectModel({
         title: project.title,
         desc: project.desc,
-        tool: project.tools,
+        tools: project.tools,
         links: {
           github: project.github,
           live: project.live
