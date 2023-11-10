@@ -1,28 +1,40 @@
 import ProjectModel from "../../models/ProjectModel.js";
+import { v2 as cloudinary } from 'cloudinary';
 
-const addproject= async (req, res) => {
+const addproject = async (req, res) => {
   try {
     const project = req.body;
-console.log(project)
-      // Assuming that 'image' contains the image file path
-      const projectData = new ProjectModel({
-        title:project.title,
-        desc:project.desc,
-        tool:project.tools,
-        links:{
-            github:project.github,
-            live:project.live
+    const uploadedFile = req.files.image
+    const base64DataUrl = `data:${uploadedFile.mimetype};base64,${uploadedFile.data.toString('base64')}`;
+    const savedProjects = []
+    await cloudinary.uploader.upload(base64DataUrl, async (err, result) => {
+      const ProjectData = new ProjectModel({
+        title: project.title,
+        desc: project.desc,
+        tool: project.tools,
+        links: {
+          github: project.github,
+          live: project.live
         },
-        image: req.file.filename // Access the uploaded file path using req.files[i]
+        publicid:result.public_id,
+        image: result.secure_url // Access the uploaded file path using req.files[i]
       });
 
-      const savedProject = await projectData.save();
+      const savedProject = await ProjectData.save();
+      savedProjects.push(savedProject)
 
-    
+      res.status(201).json({
+        success: true,
+        message: 'Project added successfully',
+        data: savedProjects
+      });
 
-    res.status(201).json({ message: 'Project added successfully', data: savedProject });
+    })
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
   }
 };
 

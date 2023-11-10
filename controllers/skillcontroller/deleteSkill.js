@@ -1,5 +1,6 @@
 import SkillModel from '../../models/SkillModel.js';
-import fs from 'fs'
+import { v2 as cloudinary } from 'cloudinary';
+
 const deleteskill = async (req, res) => {
   try {
     const skill = await SkillModel.findById(req.params.id);
@@ -9,19 +10,12 @@ const deleteskill = async (req, res) => {
         success:false,
         message: 'Skill not found' });
     }
-
-    await SkillModel.findByIdAndRemove(req.params.id);
-
-    const imagePath = `C:/New Volume D/Web Development/Projects/React/Portfolio/client/src/images/uploads/skills/${skill.image}`;
-    
-    fs.unlink(imagePath, (err) => {
-      if (err) {
-        console.error('Error deleting image file:', err);
-      }
-    });
-
-    res.status(200).json({success:true,
-      message: 'Skill deleted successfully' });
+    const result = await cloudinary.uploader.destroy(skill.publicid);
+    if (result.result==='ok') {
+      await SkillModel.findByIdAndRemove(req.params.id);
+      res.status(200).json({success:true,
+        message: 'Skill deleted successfully' });
+    }
   } catch (error) {
     console.error('Error deleting skill:', error);
     res.status(500).json({ error: 'Internal server error' });

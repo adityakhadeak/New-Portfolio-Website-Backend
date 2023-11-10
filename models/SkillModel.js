@@ -5,6 +5,10 @@ const skillSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    publicid:{
+        type:String,
+        required:true,
+    },
     image:{
         type:String,
         required:true

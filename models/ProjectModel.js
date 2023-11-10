@@ -10,16 +10,17 @@ const projectSchema=new mongoose.Schema({
         required:true
     },
     tools:{
-        "1st":String,
-        "2nd":String,
-        "3rd":String,
-        "4th":String,
-
+       type:String,
+       require:true
     },
     links: {
         github: String,
         live: String,
       },
+    publicid:{
+        type:String,
+        required:true
+    },
     image:{
         type:String
     }

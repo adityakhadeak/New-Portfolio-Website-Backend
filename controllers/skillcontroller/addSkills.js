@@ -4,12 +4,15 @@ import { v2 as cloudinary } from 'cloudinary';
 const addskill = async (req, res) => {
   try {
     const skills = req.body;
-    const file = req.files.image
+    const uploadedFile = req.files.image
+    const base64DataUrl = `data:${uploadedFile.mimetype};base64,${uploadedFile.data.toString('base64')}`;
+
     let savedSkills = [];
 
-    await cloudinary.uploader.upload(file.tempFilePath, async (err, result) => {
+    await cloudinary.uploader.upload(base64DataUrl, async (err, result) => {
       const skillData = new SkillModel({
         name: skills.name,
+        publicid:result.public_id,
         image: result.secure_url // Access the uploaded file path using req.files[i]
       });
 

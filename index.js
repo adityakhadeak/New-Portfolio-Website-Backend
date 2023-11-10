@@ -16,7 +16,7 @@ const app=express()
 
 dotenv.config()
 app.use(fileUpload({
-    useTempFiles:true
+    useTempFiles:false
 }))
 app.use(express.json())
 app.use(cors())
