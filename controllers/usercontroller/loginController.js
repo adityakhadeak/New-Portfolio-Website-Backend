@@ -29,7 +29,7 @@ const logincontroll=async(req,res)=>{
             }
         }
 
-        const authtoken= jwt.sign(userData,process.env.JWT_SECRET)
+        const authtoken= jwt.sign(userData,process.env.JWT_SECRET,{ expiresIn: '1m' })
         success=true
 
         return res.status(200).json({

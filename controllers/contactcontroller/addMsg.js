@@ -6,7 +6,7 @@ const addMsg= async(req,res)=>{
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ message: errors.array()[0].msg });
     }
 
     const {name,email,msg}=req.body
@@ -23,6 +23,7 @@ const addMsg= async(req,res)=>{
     } catch (error) {
         console.log(error.message)
         res.status(400).json({
+            success:false,
             message: "Internal server error"
         })
     }

@@ -10,11 +10,19 @@ const fetchuser=async(req,res,next)=>{
             })
         }
         const data = jwt.verify(authtoken,process.env.JWT_SECRET)
+
+        if (new Date().getTime() / 1000 > data.exp) {
+            return res.status(401).json({
+              success:false,  
+              message: "Token has expired"
+            });
+          }
+
         req.user=data.user
         next()
     } catch (error) {
         res.status(401).json({
-            message:"Please Validate Using Valid Token"
+            message: "Token has expired"
         })
     }
 }
