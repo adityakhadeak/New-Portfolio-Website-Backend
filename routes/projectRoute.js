@@ -10,7 +10,7 @@ const routerProject=express()
 routerProject.post('/addproject',fetchuser,addproject)
 
 //Route to fetch skills 
-routerProject.get('/fetchprojects',fetchuser,async(req,res)=>{
+routerProject.get('/fetchprojects',async(req,res)=>{
   try {
     const projects=await ProjectModel.find({})
     if (!projects) {

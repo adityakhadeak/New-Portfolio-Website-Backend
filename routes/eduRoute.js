@@ -21,7 +21,7 @@ routerEdu.post("/addedu",
 ,fetchuser,addedu);
 
 //creating the route for Fetch About 
-routerEdu.get("/fetchedu",fetchuser,async(req,res)=>{
+routerEdu.get("/fetchedu",async(req,res)=>{
     try {
         const eductions=await EduModel.find({})
         if (!eductions) {

@@ -32,7 +32,7 @@ const updateexp = async (req, res) => {
         const updatedExp= await ExpModel.findByIdAndUpdate(req.params.id,{$set:newExp},{new:true})
 
         res.status(200).json({
-            success:false,
+            success:true,
             message: "Experience Detail Updated Successfully",
             updatedData:updatedExp
         })

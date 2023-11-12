@@ -11,7 +11,7 @@ const routerSkill = express()
 routerSkill.post('/addskills', fetchuser, addskill)
 
 //Route to fetch skills 
-routerSkill.get('/fetchskills', fetchuser, async (req, res) => {
+routerSkill.get('/fetchskills', async (req, res) => {
   try {
     const skills = await SkillModel.find({})
     if (!skills) {

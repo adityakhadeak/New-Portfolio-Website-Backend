@@ -11,7 +11,7 @@ const routerCer = express()
 routerCer.post('/addcertificate', fetchuser, addcertificate)
 
 //Fetch Certificate Details
-routerCer.get('/fetchcertificates', fetchuser, async (req, res) => {
+routerCer.get('/fetchcertificates', async (req, res) => {
     try {
         const cerData = await CertificateModel.find({})
         if (!cerData) {

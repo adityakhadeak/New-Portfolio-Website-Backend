@@ -11,7 +11,7 @@ const routerAbout = express()
 routerAbout.post("/addabout", fetchuser, addabout);
 
 //creating the route for Fetch About 
-routerAbout.get("/fetchabout", fetchuser, async (req, res) => {
+routerAbout.get("/fetchabout", async (req, res) => {
     try {
         const aboutParas = await AboutModel.find({})
         if (!aboutParas) {

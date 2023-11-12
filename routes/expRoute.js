@@ -12,7 +12,7 @@ const routerExp= express()
 routerExp.post("/addexp",fetchuser,addexp);
 
 //creating the route for Fetch About 
-routerExp.get("/fetchexp",fetchuser,async(req,res)=>{
+routerExp.get("/fetchexp",async(req,res)=>{
     try {
         const experience=await ExpModel.find({})
         if (!experience) {
