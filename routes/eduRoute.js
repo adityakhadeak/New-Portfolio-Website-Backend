@@ -2,7 +2,7 @@ import express from 'express'
 import { body } from 'express-validator'
 import EduModel from '../models/EduModel.js'
 import fetchuser from '../middleware/fetchUser.js';
-import addedu from '../controllers/educontroller/addedu.js';
+import addedu from '../controllers/educontroller/addEdu.js';
 import updateedu from '../controllers/educontroller/updateEdu.js';
 import deleteedu from '../controllers/educontroller/deleteEdu.js';
 
