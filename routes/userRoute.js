@@ -2,7 +2,7 @@ import express from 'express'
 import { body } from 'express-validator'
 import UserModel from '../models/UserModel.js'
 import createuser from '../controllers/usercontroller/userCreateControll.js'
-import logincontroll from '../controllers/usercontroller/logincontroller.js'
+import logincontroll from '../controllers/usercontroller/loginController.js'
 import fetchuser from '../middleware/fetchUser.js'
 import updatepass from '../controllers/usercontroller/updatePass.js'
 const routeUser = express()
