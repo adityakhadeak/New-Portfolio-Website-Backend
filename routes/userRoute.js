@@ -5,6 +5,10 @@ import createuser from '../controllers/usercontroller/userCreateControll.js'
 import logincontroll from '../controllers/usercontroller/loginController.js'
 import fetchuser from '../middleware/fetchUser.js'
 import updatepass from '../controllers/usercontroller/updatePass.js'
+import adduserdetails from '../controllers/usercontroller/addUserDetails.js'
+import UserDetailsModel from '../models/UserDetailsModel.js'
+import deleteuserdetails from '../controllers/usercontroller/deleteUserDetails.js'
+import updateuserdetails from '../controllers/usercontroller/updateUserDetails.js'
 const routeUser = express()
 
 
@@ -24,7 +28,6 @@ routeUser.post('/login', logincontroll)
 routeUser.get('/getuser', fetchuser, async (req, res) => {
   try {
     const userId = req.user.id
-    console.log(userId)
     const user = await UserModel.findById(userId).select('-password')
     res.status(200).json({
       success:true,
@@ -38,8 +41,23 @@ routeUser.get('/getuser', fetchuser, async (req, res) => {
     })
   }
 })
-
+routeUser.post('/adduserdetails',fetchuser,adduserdetails)
+routeUser.delete('/deleteuserdetails/:id',fetchuser,deleteuserdetails)
+routeUser.get('/fetchuserdetails',async(req,res)=>{
+  try {
+    const userDetails = await UserDetailsModel.find({})
+    res.status(200).json({
+      success:true,
+      data:userDetails
+    })
+  } catch (error) {
+    res.status(400).json({
+      success:false,
+      message: "Internal server error"
+    })
+  }
+})
 //route for updating the password
-routeUser.put('/updatepass', fetchuser, updatepass)
+routeUser.put('/updateuserdetails/:id', fetchuser, updateuserdetails)
 
 export default routeUser
