@@ -11,7 +11,6 @@ const limiter = rateLimit({
     windowMs: 24 * 60 * 60 * 1000, // 24 hours
     max: 2, // Allow 1 request per email per day
     keyGenerator: (req) => {
-      // Customize the key generator to use the user's email address as the identifier
       return req.body.email;
     },
         message: "Only two message for today.",
