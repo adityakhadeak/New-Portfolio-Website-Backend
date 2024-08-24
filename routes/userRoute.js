@@ -60,4 +60,5 @@ routeUser.get('/fetchuserdetails',async(req,res)=>{
 //route for updating the password
 routeUser.put('/updateuserdetails/:id', fetchuser, updateuserdetails)
 
+routeUser.put('/updatepass',fetchuser,updatepass)
 export default routeUser
