@@ -9,6 +9,7 @@ import adduserdetails from '../controllers/usercontroller/addUserDetails.js'
 import UserDetailsModel from '../models/UserDetailsModel.js'
 import deleteuserdetails from '../controllers/usercontroller/deleteUserDetails.js'
 import updateuserdetails from '../controllers/usercontroller/updateUserDetails.js'
+import { forgotPass } from '../controllers/usercontroller/forgotPass.js'
 const routeUser = express()
 
 
@@ -61,4 +62,6 @@ routeUser.get('/fetchuserdetails',async(req,res)=>{
 routeUser.put('/updateuserdetails/:id', fetchuser, updateuserdetails)
 
 routeUser.put('/updatepass',fetchuser,updatepass)
+
+routeUser.get('/forgot-password',forgotPass)
 export default routeUser
