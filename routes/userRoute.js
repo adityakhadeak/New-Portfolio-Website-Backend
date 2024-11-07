@@ -10,6 +10,7 @@ import UserDetailsModel from '../models/UserDetailsModel.js'
 import deleteuserdetails from '../controllers/usercontroller/deleteUserDetails.js'
 import updateuserdetails from '../controllers/usercontroller/updateUserDetails.js'
 import { forgotPass } from '../controllers/usercontroller/forgotPass.js'
+import { resetPassword } from '../controllers/usercontroller/resetPassword.js'
 const routeUser = express()
 
 
@@ -64,4 +65,5 @@ routeUser.put('/updateuserdetails/:id', fetchuser, updateuserdetails)
 routeUser.put('/updatepass',fetchuser,updatepass)
 
 routeUser.get('/forgot-password',forgotPass)
+routeUser.post('/reset-password',resetPassword)
 export default routeUser
