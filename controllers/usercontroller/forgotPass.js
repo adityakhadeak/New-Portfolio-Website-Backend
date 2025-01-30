@@ -105,7 +105,7 @@ export const forgotPass = async (req, res) => {
         <p class="cta-text">If you did not request this, you can safely ignore this email.</p>
 
         <div style="text-align:center">
-            <a href="https://adityakhadeakapis.vercel.app/reset-password?token=${verificationtoken}" class="button">Reset Password</a>
+            <a href="https://www.adityakhadeak.engineer/reset-password?token=${verificationtoken}" class="button">Reset Password</a>
         </div>
 
         <p style="font-size:13px;margin-top:20px;">Best regards,<br>Your Company Team</p>
