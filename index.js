@@ -22,9 +22,14 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(
   cors({
-    origin: "https://www.adityakhadeak.engineer",
+    origin: [
+      "https://www.adityakhade.tech",
+      // "http://localhost:3000"
+    ],
   })
-);app.use('/api/contact',routeContact)
+);
+
+app.use('/api/contact',routeContact)
 app.use('/api/user',routeUser)
 app.use('/api/about',routerAbout)
 app.use('/api/edu',routerEdu)

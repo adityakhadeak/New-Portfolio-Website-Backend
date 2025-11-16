@@ -17,7 +17,6 @@ export const forgotPass = async (req, res) => {
       expiresIn: "5m",
     });
 
-    console.log( process.env.PASS)
     const config = {
       service: "gmail",
       auth: {
